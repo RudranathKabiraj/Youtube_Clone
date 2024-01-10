@@ -15,10 +15,12 @@ class ApiError extends Error{
         this.success = false;
         this.errors = errors
 
+/*The purpose of capturing the stack trace is to provide additional debugging information. The stack trace contains a sequence of 
+function calls and file locations, showing how the program reached the point where the error was thrown.*/
         if(statck){
             this.stack = statck
         }else{
-            Error.captureStackTrace(this,this.constructor)
+            Error.captureStackTrace(this,this.constructor)  //second argument is the constructor function (in this case, this.constructor refers to the ApiError constructor).
         }
     }
 
